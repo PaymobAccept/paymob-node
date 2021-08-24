@@ -1,4 +1,4 @@
-import { getApiBaseUrl, getApiVersion } from "../utils";
+import { getApiBaseUrl, getApiVersion, paymobLogger } from "../utils";
 import { requesAgenttHeadersBuilder } from "./_requesAgenttHeadersBuilder";
 import { requester } from "./_requester";
 
@@ -21,7 +21,7 @@ export class HTTPRequest {
 	}
 
 	request(options) {
-		console.log("Calling next API from Inside Node SDK");
+		paymobLogger("Calling next API from Inside Node SDK");
 		const { url } = options;
 		options.headers = {
 			...options.headers,

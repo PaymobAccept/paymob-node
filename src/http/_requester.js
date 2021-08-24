@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import { paymobLogger } from "../utils";
 import { requestIdLogger } from "./_requestIdLogger";
 
 export const requester = async (url, options) => {
@@ -11,7 +12,7 @@ export const requester = async (url, options) => {
 				requestIdLogger(headers.get("http_x_request_id"));
 				resolve(data);
 			} catch (error) {
-				console.error(error);
+				paymobLogger(error, "error");
 				reject(error);
 			}
 		};

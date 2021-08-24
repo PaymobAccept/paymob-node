@@ -49,7 +49,7 @@ app.get("/marketplace/secret/", (req, res) => {
 	intention.create(payload).then(nextApiResponse => {
 		res.send(nextApiResponse);
 	}).catch(err => {
-		res.send(err);
+		res.send(err);	
 	});
 });
 

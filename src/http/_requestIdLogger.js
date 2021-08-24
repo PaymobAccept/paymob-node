@@ -1,1 +1,5 @@
-export const requestIdLogger = (requestId) => console.log(`Paymob Request Trace ID: ${requestId}`);
+import { paymobLogger } from "../utils";
+
+export const requestIdLogger = (requestId) => {
+	paymobLogger(`Paymob Request Trace ID: ${requestId}`, "info");
+};
