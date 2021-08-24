@@ -46,7 +46,7 @@ const payload = {
 };
 
 app.get("/marketplace/secret/", (req, res) => {
-	intention.patch(payload).then(nextApiResponse => {
+	intention.create(payload).then(nextApiResponse => {
 		res.send(nextApiResponse);
 	}).catch(err => {
 		res.send(err);

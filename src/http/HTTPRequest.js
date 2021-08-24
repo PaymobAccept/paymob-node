@@ -1,4 +1,5 @@
 import { getApiBaseUrl, getApiVersion } from "../utils";
+import { requesAgenttHeadersBuilder } from "./_requesAgenttHeadersBuilder";
 import { requester } from "./_requester";
 
 export class HTTPRequest {
@@ -19,9 +20,13 @@ export class HTTPRequest {
 		return url;
 	}
 
-	async request(options) {
+	request(options) {
 		console.log("Calling next API from Inside Node SDK");
 		const { url } = options;
+		options.headers = {
+			...options.headers,
+			...requesAgenttHeadersBuilder()
+		};
 		return requester(url, options);
 	}
 }
