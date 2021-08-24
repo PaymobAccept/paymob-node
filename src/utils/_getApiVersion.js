@@ -1,0 +1,1 @@
+export const getApiVersion = () => `v${process.env.API_VERSION}`;

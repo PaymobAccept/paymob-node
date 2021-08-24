@@ -28,18 +28,11 @@ module.exports = {
 	resolve: {
 		extensions: ["*", ".js"]
 	},
-	// output: {
-	// 	filename: "hello-world.js",
-	// 	path: path.resolve(__dirname, "dist"),
-	// 	libraryTarget: "var",
-	// 	library: "HelloWorld"
-	// },
 	output: {
 		path: path.resolve(__dirname, "./dist"),
 		filename: "paymob.js",
 		libraryTarget: "commonjs",
 		globalObject: "Paymob",
-		// library: "Paymob"
 	},
 	devServer: {
 		contentBase: path.resolve(__dirname, "./dist"),

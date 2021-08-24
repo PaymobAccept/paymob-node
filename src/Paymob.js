@@ -9,10 +9,6 @@ class PaymobFactory {
 	intention() {
 		return this._intention;
 	}
-	
-	pay() {
-		console.log(this.secretKey);
-	}
 }
 
 var Paymob = (secretKey) => new PaymobFactory(secretKey);

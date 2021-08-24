@@ -1,17 +1,45 @@
-import { HTTPRequest } from "../http/HTTPRequest";
+import {
+	authHeaderBuilder,
+	HTTPRequest,
+	applicationJsonHeader
+} from "../http";
+import { getApiBaseUrl, getApiVersion } from "../utils";
 
 export class Intention {
-	constructor(sk) {
-		this.sk = sk;
-		this.request = new HTTPRequest(this.sk);
-		console.log("SK FROM INSIDE Intention constructor()", sk);
-
+	constructor(secretKey) {
+		this.secretKey = secretKey;
+		this.request = new HTTPRequest(this.secretKey);
 	}
 
+	_getApiBaseUrl() {
+		return getApiBaseUrl();
+	}
 
-	create(args) {
-		console.log("Calling HTTPRequest create from INSIDE Intention Class");
-		console.log("Intention.create() args", args);
-		this.request.request(args);
+	_getApiVersion() {
+		return getApiVersion();
+	}
+
+	_getFullUrl(route) {
+		const url = `${this._getApiBaseUrl()}/${this._getApiVersion()}/${route}/`;
+		return url;
+	}
+
+	_getBasicOptions(data) {
+		return {
+			url: this._getFullUrl("intention"),
+			body: JSON.stringify(data),
+			headers: {
+				...applicationJsonHeader(),
+				...authHeaderBuilder(this.secretKey)
+			}
+		};
+	}
+
+	create(data) {
+		const options = {
+			method: "POST",
+			...this._getBasicOptions(data)
+		};
+		return this.request.request(options);
 	}
 }

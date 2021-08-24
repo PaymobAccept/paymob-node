@@ -16,3 +16,4 @@
 - Handle public/private props/methods for classes after final implementation. 
 - _request_agent_headers use built-in headers creators.
 - add CODE_OF_CONDUCT file
+v1/intention/
