@@ -5,11 +5,19 @@ class PaymobFactory {
 	constructor(secretKey) {
 		this.secretKey = secretKey;
 		this._intention = new Intention(this.secretKey);
+		this._initilizeIntentionBuilder();
 		paymobLogger(`Paymob Node SDK Initialized with secret Key: ${this.secretKey}`);
 	}
-
-	intention() {
-		return this._intention;
+	
+	_initilizeIntentionBuilder() {
+		this.Intention = {
+			create: (payload) => this._intention.create(payload),
+			update: (payload) => this._intention.update(payload),
+			patch: (payload) => this._intention.patch(payload),
+			delete: (payload) => this._intention.delete(payload),
+			retrieve: () => this._intention.retrieve(),
+			list: () => this._intention.list(),
+		};
 	}
 }
 

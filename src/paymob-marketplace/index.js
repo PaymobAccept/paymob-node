@@ -7,7 +7,6 @@ app.use(cors());
 
 const { Paymob } = require("../../dist/paymob");
 const paymob = Paymob("skt_a67ba5b0a9cfb19e37a685f9216ebf456ddc63aa9706d21c370571269689191b");
-const intention = paymob.intention();
 
 const payload = {
 	amount: "100",
@@ -47,7 +46,7 @@ const payload = {
 };
 
 app.get("/marketplace/secret/", (req, res) => {
-	intention.create(payload).then(nextApiResponse => {
+	paymob.Intention.create(payload).then(nextApiResponse => {
 		res.send(nextApiResponse);
 	}).catch(err => {
 		res.send(err);	
