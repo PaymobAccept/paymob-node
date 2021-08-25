@@ -1,13 +1,16 @@
 export const paymobLogger = (msg, level) => {
 	const allowed = ["log", "info", "warn", "error"];
-
-	// @TODO: Colorize logs natively or by package
-	// eslint-disable-next-line no-unused-vars
-	const palette = {};
+	const fontColor = "\x1b[37m"; // White
+	const palette = {
+		log: "\x1b[42m",
+		info: "\x1b[44m",
+		warn: "\x1b[43m",
+		error: "\x1b[41m"
+	};
 	
 	if (allowed.includes(level)) {
-		console[level](msg);
+		console[level](palette[level], fontColor,msg);
 	} else {
-		console.log(msg);
+		console.log(palette["log"], fontColor, msg);
 	}
 };

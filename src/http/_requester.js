@@ -10,9 +10,14 @@ export const requester = async (url, options) => {
 				const headers = await response.headers;
 				const data = await response.json();
 				requestIdLogger(headers.get("http_x_request_id"));
+				if(response.ok) {
+					paymobLogger(`Request to paymob completed successfully, Response data: ${JSON.stringify(data)}`);
+				} else {
+					paymobLogger(`Oh ah! Error while requesting paymob: ${JSON.stringify(data)}`, "error");
+				}
 				resolve(data);
 			} catch (error) {
-				paymobLogger(error, "error");
+				paymobLogger(`Oh ah! Error while requesting paymob: ${JSON.stringify(error)}`, "error");
 				reject(error);
 			}
 		};

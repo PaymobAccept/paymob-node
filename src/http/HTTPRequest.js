@@ -21,7 +21,7 @@ export class HTTPRequest {
 	}
 
 	request(options) {
-		paymobLogger("Calling next API from Inside Node SDK");
+		paymobLogger(`Sending request to paymob, Request info: ${JSON.stringify(options)}`, "info");
 		const { url } = options;
 		options.headers = {
 			...options.headers,
