@@ -1,8 +1,9 @@
 // @ts-nocheck
 
 const express = require("express");
+const cors = require("cors");
 const app = express();
-const port = 4200;
+app.use(cors());
 
 const { Paymob } = require("../../dist/paymob");
 const paymob = Paymob("skt_a67ba5b0a9cfb19e37a685f9216ebf456ddc63aa9706d21c370571269689191b");
@@ -42,7 +43,7 @@ const payload = {
 		"state": "Utah",
 	},
 	customer: { "first_name": "misrax", "last_name": "misrax", "email": "misrax@misrax.com" },
-	delivery_needed: false,
+	delivery_needed: false, 	 	
 };
 
 app.get("/marketplace/secret/", (req, res) => {
@@ -52,6 +53,8 @@ app.get("/marketplace/secret/", (req, res) => {
 		res.send(err);	
 	});
 });
+
+const port = 4200;
 
 app.listen(port, () => {
 	console.log(`Paymob marketplace listening at http://localhost:${port}`);
