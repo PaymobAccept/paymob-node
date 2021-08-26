@@ -6,7 +6,6 @@ import { paymobLogger } from "../utils";
  * @param {String} requestId
  * @return {*}
 */
-
 export const requestIdLogger = (requestId) => {
 	paymobLogger(`Paymob Request Trace ID: ${requestId}`, "warn");
 };

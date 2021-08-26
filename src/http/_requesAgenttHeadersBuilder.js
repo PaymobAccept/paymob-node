@@ -5,7 +5,6 @@ const os = require("os");
  * @requesAgenttHeadersBuilder
  * @return {Object}
 */
-
 export const requesAgenttHeadersBuilder = () => {
 	/**
 	 * user agent header value

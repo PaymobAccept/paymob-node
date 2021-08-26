@@ -7,7 +7,6 @@ import { requester } from "./_requester";
  * @export
  * @class HTTPRequest
  */
-
 export class HTTPRequest {
 	/**
 	 * Creates an instance of Intention.
