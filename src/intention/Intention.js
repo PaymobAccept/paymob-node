@@ -10,7 +10,6 @@ import { getApiBaseUrl, getApiVersion } from "../utils";
  * @export
  * @class Intention
  */
-
 export class Intention {
 	/**
 	 * Creates an instance of Intention.
