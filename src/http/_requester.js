@@ -2,6 +2,14 @@ import fetch from "node-fetch";
 import { paymobLogger } from "../utils";
 import { requestIdLogger } from "./_requestIdLogger";
 
+/**
+ * http requester utils 
+ * @name requester
+ * @param {String} url
+ * @param {Object} options
+ * @return {Promise}
+*/
+
 export const requester = async (url, options) => {
 	return new Promise(function (resolve, reject) {
 		const callback = async () => {

@@ -1,8 +1,26 @@
 import { getApiVersion } from "../utils";
 const os = require("os");
 
+/**
+ * @requesAgenttHeadersBuilder
+ * @return {Object}
+*/
+
 export const requesAgenttHeadersBuilder = () => {
+	/**
+	 * user agent header value
+	 * @type {String}
+	 * @name userAgent
+	 * @memberof requesAgenttHeadersBuilder
+	 */
 	const userAgent = `Paymob Node SDK ${getApiVersion()}`;
+
+	/**
+	 * Collect sdk_underlying_sys_info header value
+	 * @type {Function}
+	 * @name underlyingSysInfoCollector
+	 * @memberof requesAgenttHeadersBuilder
+	 */
 	const underlyingSysInfoCollector = () => {
 		const system = os.type();
 		const node = JSON.stringify(os.cpus());
@@ -14,6 +32,12 @@ export const requesAgenttHeadersBuilder = () => {
 		return underlyingSysInfo;
 	};
 
+	/**
+	 * Collect sdk_underlying_sys_info header value
+	 * @type {Object}
+	 * @name userAgentObj
+	 * @memberof requesAgenttHeadersBuilder
+	 */
 	const userAgentObj = {
 		"sdk_api_version": getApiVersion(),
 		"sdk_language": "Node",
@@ -24,6 +48,12 @@ export const requesAgenttHeadersBuilder = () => {
 		"sdk_underlying_sys_info": underlyingSysInfoCollector()
 	};
 
+	/**
+	 * reques agentt headers object
+	 * @type {Object}
+	 * @name requesAgenttHeadersBuilder
+	 * @memberof requesAgenttHeadersBuilder
+	 */
 	const headers = {
 		"User-Agent": userAgent,
 		"X-Paymob-SDK-Agent": JSON.stringify(userAgentObj)

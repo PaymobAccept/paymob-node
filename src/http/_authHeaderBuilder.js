@@ -1,3 +1,9 @@
-export const authHeaderBuilder = (sk) => ({
-	"Authorization": `token ${sk}`
+/**
+ * @authHeaderBuilder
+ * @param {*} secretKey
+ * @return {Object}
+*/
+
+export const authHeaderBuilder = (secretKey) => ({
+	"Authorization": `token ${secretKey}`
 });
