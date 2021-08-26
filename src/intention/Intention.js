@@ -5,25 +5,40 @@ import {
 } from "../http";
 import { getApiBaseUrl, getApiVersion } from "../utils";
 
+/**
+ * Intention operations (create, update, patch, delete, retrieve, list)
+ * @export
+ * @class Intention
+ */
+
 export class Intention {
+	/**
+	 * Creates an instance of Intention.
+	 * @param {*} secretKey
+	 * @memberof PaymobFactory
+	 */
 	constructor(secretKey) {
 		this.secretKey = secretKey;
 		this.request = new HTTPRequest(this.secretKey);
 	}
 
+	/** @private */
 	_getApiBaseUrl() {
 		return getApiBaseUrl();
 	}
 
+	/** @private */
 	_getApiVersion() {
 		return getApiVersion();
 	}
 
+	/** @private */
 	_getFullUrl(route) {
 		const url = `${this._getApiBaseUrl()}/${this._getApiVersion()}/${route}/`;
 		return url;
 	}
 
+	/** @private */
 	_getBasicOptions(data) {
 		return {
 			url: this._getFullUrl("intention"),
@@ -35,6 +50,7 @@ export class Intention {
 		};
 	}
 
+	/** @private */
 	_getBasicOptionsForGetRequests() {
 		return {
 			url: this._getFullUrl("intention"),
@@ -45,6 +61,12 @@ export class Intention {
 		};
 	}
 
+	/**
+	 * create intention.
+	 * @param {Object} data
+	 * @return {Promise} 
+	 * @memberof Intention
+	 */
 	create(data) {
 		const options = {
 			method: "post",
@@ -53,6 +75,12 @@ export class Intention {
 		return this.request.request(options);
 	}
 
+	/**
+	 * update intention.
+	 * @param {Object} data
+	 * @return {Promise} 
+	 * @memberof Intention
+	 */
 	update(data) {
 		const options = {
 			method: "put",
@@ -61,6 +89,12 @@ export class Intention {
 		return this.request.request(options);
 	}
 
+	/**
+	 * patch intention.
+	 * @param {Object} data
+	 * @return {Promise} 
+	 * @memberof Intention
+	 */
 	patch(data) {
 		const options = {
 			method: "patch",
@@ -69,6 +103,12 @@ export class Intention {
 		return this.request.request(options);
 	}
 
+	/**
+	 * delete intention.
+	 * @param {Object} data
+	 * @return {Promise} 
+	 * @memberof Intention
+	 */
 	delete(data) {
 		const options = {
 			method: "delete",
@@ -77,6 +117,11 @@ export class Intention {
 		return this.request.request(options);
 	}
 
+	/**
+	 * retrieve intention.
+	 * @return {Promise} 
+	 * @memberof Intention
+	 */
 	retrieve() {
 		const options = {
 			method: "get",
@@ -85,6 +130,11 @@ export class Intention {
 		return this.request.request(options);
 	}
 
+	/**
+	 * list intention.
+	 * @return {Promise} 
+	 * @memberof Intention
+	 */
 	list() {
 		const options = {
 			method: "get",
