@@ -1,3 +1,10 @@
+/**
+ * paymonb logger util
+ * @param {string} msg
+ * @param {string} [level='log']
+ * @name paymobLogger
+ * @return {*}
+*/
 export const paymobLogger = (msg, level) => {
 	const allowed = ["log", "info", "warn", "error"];
 	const fontColor = "\x1b[37m"; // White
