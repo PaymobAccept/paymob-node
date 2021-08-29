@@ -4,7 +4,6 @@ import { requester } from "./_requester";
 
 /**
  * Wanna a request!, it's HTTPRequest class.
- * @export
  * @class HTTPRequest
  */
 export class HTTPRequest {

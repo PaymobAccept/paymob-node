@@ -1,5 +1,5 @@
 /**
- * paymonb logger util
+ * paymob logger util
  * @param {string} msg
  * @param {string} [level='log']
  * @name paymobLogger

@@ -7,7 +7,9 @@
     "build": "webpack --config webpack.config.js --mode=production",
     "dev": "npm run build && nodemon './src/paymob-marketplace'",
     "commit": "git-cz",
-    "local:server": "nodemon './src/paymob-marketplace'"
+    "local:server": "nodemon './src/paymob-marketplace'",
+    "generate:doc": "jsdoc -c './jsdoc.json'"
+
   },
   "repository": {
     "type": "git",

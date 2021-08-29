@@ -1,5 +1,5 @@
 /**
- * return current api version
+ * return current api domain
  * @name getApiBaseUrl
  * @return {*}
 */

@@ -7,7 +7,6 @@ import { getApiBaseUrl, getApiVersion } from "../utils";
 
 /**
  * Intention operations (create, update, patch, delete, retrieve, list)
- * @export
  * @class Intention
  */
 export class Intention {
