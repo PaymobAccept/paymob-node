@@ -1,4 +1,4 @@
-# paymob-next-node
+# Paymob node SDK
 
 ### TODO:
 - Document files using jsdoc.
