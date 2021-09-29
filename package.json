@@ -9,7 +9,6 @@
     "commit": "git-cz",
     "local:server": "nodemon './src/paymob-marketplace'",
     "generate:doc": "jsdoc -c './jsdoc.json'"
-
   },
   "repository": {
     "type": "git",

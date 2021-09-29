@@ -6,12 +6,12 @@ const app = express();
 app.use(cors());
 
 const { Paymob } = require("../../dist/paymob");
-const paymob = Paymob("skt_a67ba5b0a9cfb19e37a685f9216ebf456ddc63aa9706d21c370571269689191b");
+const paymob = Paymob("skl_eb7e7ac5117dcd6c0b7539a635f61764aca615bd3b63051606b845c30db3bff8");
 
 const payload = {
 	amount: "100",
 	currency: "EGP",
-	payment_methods: ["card", "kiosk", "wallets", "valu"],
+	payment_methods: ["card", "kiosk"],
 	items: [
 		{
 			"name": "ASC1515",
