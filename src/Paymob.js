@@ -1,5 +1,5 @@
 import { Intention } from "./intention";
-import { Refund } from "./payment-reference";
+import { Refund, Void } from "./payment-reference";
 import { paymobLogger } from "./utils";
 
 /**
@@ -17,10 +17,10 @@ class PaymobFactory {
 		this.secretKey = secretKey;
 		this._intention = new Intention(this.secretKey);
 		this._refund = new Refund(this.secretKey);
+		this._void = new Void(this.secretKey);
 		this._initilizeIntentionBuilder();
 		paymobLogger(`Paymob Node SDK Initialized with secret Key: ${this.secretKey}`);
 	}
-
 
 	/** @private */
 	_initilizeIntentionBuilder() {
@@ -36,6 +36,11 @@ class PaymobFactory {
 		this.Refund = {
 			create: (payload) => this._refund.create(payload)
 		};
+
+		this.Void = {
+			create: (payload) => this._void.create(payload)
+		};
+
 	}
 }
 

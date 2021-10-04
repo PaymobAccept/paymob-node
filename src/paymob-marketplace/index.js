@@ -82,6 +82,16 @@ app.get("/marketplace/refund/", (req, res) => {
 	});
 });
 
+app.get("/marketplace/void/", (req, res) => {
+	const payload = { payment_reference: "14394788" };
+	
+	paymob.Void.create(payload).then(nextApiResponse => {
+		res.send(nextApiResponse);
+	}).catch(err => {
+		res.send(err);	
+	});
+});
+
 const port = 4200;
 
 app.listen(port, () => {

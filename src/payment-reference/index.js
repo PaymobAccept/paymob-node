@@ -1,3 +1,4 @@
-import {Refund} from "./_Refund";
+import { Refund } from "./_Refund";
+import { Void } from "./_Void";
 
-export {Refund};
+export { Refund, Void };
