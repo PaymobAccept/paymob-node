@@ -1,5 +1,5 @@
 import { Intention } from "./intention";
-import { Refund } from "./Refund/Refund";
+import { Refund } from "./payment-reference";
 import { paymobLogger } from "./utils";
 
 /**
