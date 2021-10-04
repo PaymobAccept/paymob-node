@@ -5,6 +5,8 @@ import {
 } from "../http";
 import { getApiBaseUrl, getApiVersion } from "../utils";
 
+// @TODO: to be extendable from PaymobBase
+
 /**
  * Intention operations (create, update, patch, delete, retrieve, list)
  * @class Intention
