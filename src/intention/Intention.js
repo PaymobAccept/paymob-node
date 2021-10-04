@@ -37,18 +37,9 @@ export class Intention {
 	}
 
 	/** @private */
-	_optionsUrlHandler(data) {
-		if(data.reference) {
-			return `${this._getFullUrl("intention")}${data.reference}`;
-		} else {
-			return this._getFullUrl("intention");
-		}
-	}
-
-	/** @private */
 	_getBasicOptions(data) {
 		return {
-			url: this._optionsUrlHandler(data),
+			url: this._getFullUrl("intention"),
 			body: data ? JSON.stringify(data) : {},
 			headers: {
 				...applicationJsonHeader(),
@@ -58,9 +49,9 @@ export class Intention {
 	}
 
 	/** @private */
-	_getBasicOptionsForGetRequests(data) {
+	_getBasicOptionsForGetRequests() {
 		return {
-			url: this._optionsUrlHandler(data),
+			url: this._getFullUrl("intention"),
 			headers: {
 				...applicationJsonHeader(),
 				...authHeaderBuilder(this.secretKey)
@@ -131,12 +122,13 @@ export class Intention {
 	 */
 	retrieve(payload) {
 		if(!payload || !payload.reference) {
-			throw new Error("Reference is required");
+			return Promise.reject("Reference is required");
 		}
 
 		const options = {
 			method: "get",
-			...this._getBasicOptionsForGetRequests(payload)
+			...this._getBasicOptionsForGetRequests(),
+			url: `${this._getFullUrl("intention")}${payload.reference}`
 		};
 		return this.request.request(options);
 	}

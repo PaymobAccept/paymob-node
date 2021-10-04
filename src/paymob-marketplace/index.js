@@ -54,8 +54,15 @@ app.get("/marketplace/secret/", (req, res) => {
 });
 
 app.get("/marketplace/retrieve/", (req, res) => {
-	// reference is required as a unique id for retrieve.
 	paymob.Intention.retrieve({reference: "0cc46c79-e377-4c43-91c4-95f7a2fca151" }).then(nextApiResponse => {
+		res.send(nextApiResponse);
+	}).catch(err => {
+		res.send(err);	
+	});
+});
+
+app.get("/marketplace/list/", (req, res) => {
+	paymob.Intention.list().then(nextApiResponse => {
 		res.send(nextApiResponse);
 	}).catch(err => {
 		res.send(err);	
