@@ -27,7 +27,7 @@ class PaymobFactory {
 			update: (payload) => this._intention.update(payload),
 			patch: (payload) => this._intention.patch(payload),
 			delete: (payload) => this._intention.delete(payload),
-			retrieve: () => this._intention.retrieve(),
+			retrieve: (payload) => this._intention.retrieve(payload),
 			list: () => this._intention.list(),
 		};
 	}
