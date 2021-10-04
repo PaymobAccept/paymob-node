@@ -92,6 +92,19 @@ app.get("/marketplace/void/", (req, res) => {
 	});
 });
 
+app.get("/marketplace/capture/", (req, res) => {
+	const payload = {
+		payment_reference: "14394788",
+		amount_cents:"300"
+	};
+	
+	paymob.Capture.create(payload).then(nextApiResponse => {
+		res.send(nextApiResponse);
+	}).catch(err => {
+		res.send(err);	
+	});
+});
+
 const port = 4200;
 
 app.listen(port, () => {
