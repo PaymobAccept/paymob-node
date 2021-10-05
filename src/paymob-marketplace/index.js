@@ -53,6 +53,58 @@ app.get("/marketplace/secret/", (req, res) => {
 	});
 });
 
+app.get("/marketplace/retrieve/", (req, res) => {
+	paymob.Intention.retrieve({reference: "0cc46c79-e377-4c43-91c4-95f7a2fca151" }).then(nextApiResponse => {
+		res.send(nextApiResponse);
+	}).catch(err => {
+		res.send(err);	
+	});
+});
+
+app.get("/marketplace/list/", (req, res) => {
+	paymob.Intention.list().then(nextApiResponse => {
+		res.send(nextApiResponse);
+	}).catch(err => {
+		res.send(err);	
+	});
+});
+
+app.get("/marketplace/refund/", (req, res) => {
+	const payload = {
+		payment_reference: "14394788",
+		amount_cents:"300"
+	};
+	
+	paymob.Refund.create(payload).then(nextApiResponse => {
+		res.send(nextApiResponse);
+	}).catch(err => {
+		res.send(err);	
+	});
+});
+
+app.get("/marketplace/void/", (req, res) => {
+	const payload = { payment_reference: "14394788" };
+	
+	paymob.Void.create(payload).then(nextApiResponse => {
+		res.send(nextApiResponse);
+	}).catch(err => {
+		res.send(err);	
+	});
+});
+
+app.get("/marketplace/capture/", (req, res) => {
+	const payload = {
+		payment_reference: "14394788",
+		amount_cents:"300"
+	};
+	
+	paymob.Capture.create(payload).then(nextApiResponse => {
+		res.send(nextApiResponse);
+	}).catch(err => {
+		res.send(err);	
+	});
+});
+
 const port = 4200;
 
 app.listen(port, () => {

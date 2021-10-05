@@ -5,6 +5,8 @@ import {
 } from "../http";
 import { getApiBaseUrl, getApiVersion } from "../utils";
 
+// @TODO: to be extendable from PaymobBase
+
 /**
  * Intention operations (create, update, patch, delete, retrieve, list)
  * @class Intention
@@ -120,10 +122,15 @@ export class Intention {
 	 * @return {Promise} 
 	 * @memberof Intention
 	 */
-	retrieve() {
+	retrieve(payload) {
+		if(!payload || !payload.reference) {
+			return Promise.reject("Reference is required");
+		}
+
 		const options = {
 			method: "get",
-			...this._getBasicOptionsForGetRequests()
+			...this._getBasicOptionsForGetRequests(),
+			url: `${this._getFullUrl("intention")}${payload.reference}`
 		};
 		return this.request.request(options);
 	}
