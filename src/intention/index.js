@@ -1,3 +1,3 @@
-import {Intention} from "./Intention";
+import {Intention} from "./_Intention";
 
 export {Intention};

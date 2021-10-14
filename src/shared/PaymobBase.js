@@ -47,4 +47,61 @@ export class PaymobBase {
 			}
 		};
 	}
+
+	/**
+	 * Create request.
+	 * @param {Object} data
+	 * @return {Promise} 
+	 * @memberof PaymobBase
+	 */
+	create(data) {
+		const options = {
+			method: "post",
+			...this._getBasicOptions(data)
+		};
+		return this.request.request(options);
+	}
+
+	/**
+	 * Update request.
+	 * @param {Object} data
+	 * @return {Promise} 
+	 * @memberof PaymobBase
+	 */
+	update(data) {
+		const options = {
+			method: "put",
+			...this._getBasicOptions(data)
+		};
+		return this.request.request(options);
+	}
+
+	/**
+	 * Delete request.
+	 * @param {Object} data
+	 * @return {Promise} 
+	 * @memberof PaymobBase
+	 */
+	delete(data) {
+		const options = {
+			method: "delete",
+			...this._getBasicOptions(data)
+		};
+		return this.request.request(options);
+	}
+
+	/**
+	 * Patch request.
+	 * @param {Object} data
+	 * @return {Promise} 
+	 * @memberof PaymobBase
+	 */
+	patch(data) {
+		const options = {
+			method: "patch",
+			...this._getBasicOptions(data)
+		};
+		return this.request.request(options);
+	}
+
 }

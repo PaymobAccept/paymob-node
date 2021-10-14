@@ -20,7 +20,7 @@ export class HTTPRequest {
 	 * request maker.
 	 * @param {Object} options
 	 * @return {Promise} 
-	 * @memberof Intention
+	 * @memberof HTTPRequest
 	 */
 	request(options) {
 		paymobLogger(`Sending request to paymob, Request info: ${JSON.stringify(options)}`, "info");
