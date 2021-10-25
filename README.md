@@ -8,7 +8,7 @@ Paymob Node is a minimal, straightforward and easy way to config payment intenti
 
 ## Installation
 
-Dillinger requires [Node.js](https://nodejs.org/) v10+ to run.
+Paymob Node requires [Node.js](https://nodejs.org/) v10+ to run.
 
 Install the SDK and start the game.
 
