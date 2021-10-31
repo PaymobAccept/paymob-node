@@ -6,10 +6,10 @@
 
 Paymob Node is a minimal, straightforward and easy way to config payment intention methods, voiding, refunding and more..
 
+Find the [documentation](https://docs.paymob.com/)
+
+
 ## Installation
-
-Paymob Node requires [Node.js](https://nodejs.org/) v10+ to run.
-
 Install the SDK and start the game.
 
 <!-- @TODO: add the package name at NPM -->
@@ -17,6 +17,12 @@ Install the SDK and start the game.
 ```sh
 npm install paymob-node
 ```
+
+## Prerequisites
+Paymob Node requires [Node.js](https://nodejs.org/) v10+ to run.
+
+## Supported languages
+- JavaScript
 
 ## Setup 
 To start using the SDK have to import or include and initialize it with your secrete key.
@@ -26,8 +32,11 @@ const { Paymob } = require("paymob-node");
 const paymob = Paymob("skl_***");
 ```
 
+
 ## Intention
 Paymob Node offers verity of intention methods like create, retrieve and list.
+
+> Note: this examples using express, you can use your favorite framework instead.
 
 - Create
 
@@ -76,74 +85,3 @@ app.get("/marketplace/secret/", (req, res) => {
 		res.send(err);	
 	});
 });
-
-```
-
-- Retrieve
-
-> Note: `reference` is required to be passed in the payload to retrieve.
-
-
-```js
-const payload = {
-    reference: "0cc46c79-xxx-xxx-xxxx-xxxxxxxx"
-};
-	
-app.get("/marketplace/retrieve/", (req, res) => {
-	paymob.Intention.retrieve(payload).then(paymobApiResponse => {
-		res.send(paymobApiResponse);
-	}).catch(err => {
-		res.send(err);	
-	});
-});
-```
-
-- List
-
-```js
-app.get("/marketplace/list/", (req, res) => {
-    const payload = {
-        reference: "0cc46c79-xxx-xxx-xxxx-xxxxxxxx"
-    };
-
-	paymob.Intention.list(payload).then(paymobApiResponse => {
-		res.send(paymobApiResponse);
-	}).catch(err => {
-		res.send(err);	
-	});
-});
-```
-
-## Refund
-
-```js
-const payload = {
-    payment_reference: "1234567",
-    amount_cents:"74"
-};
-	
-app.get("/marketplace/refund/", (req, res) => {
-	paymob.Refund.create(payload).then(paymobApiResponse => {
-		res.send(paymobApiResponse);
-	}).catch(err => {
-		res.send(err);	
-	});
-});
-```
-
-## Void
-
-```js
-const payload = {
-    payment_reference: "1234567",
-    amount_cents:"74"
-};
-	
-app.get("/marketplace/void/", (req, res) => {
-	paymob.Void.create(payload).then(paymobApiResponse => {
-		res.send(paymobApiResponse);
-	}).catch(err => {
-		res.send(err);	
-	});
-});
-```
