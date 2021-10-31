@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": "false",
   "scripts": {
     "build": "webpack --config webpack.config.js --mode=production",
     "dev": "npm run build && nodemon './src/paymob-marketplace'",
@@ -14,8 +15,11 @@
     "type": "git",
     "url": "git+https://github.com/misraX/paymob-next-node.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["paymob", "next", "payments", "intention", "nodejs"],
+  "author": {
+    "name": "Paymob",
+    "url": "https://www.paymob.com/"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/misraX/paymob-next-node/issues"
