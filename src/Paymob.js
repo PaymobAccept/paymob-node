@@ -2,6 +2,8 @@ import { Intention } from "./intention";
 import { Capture, Refund, Void } from "./payment-reference";
 import { paymobLogger } from "./utils";
 
+const globals = require("./global");
+
 /**
  * Paymob Node SDK factory
  * @class PaymobFactory
@@ -13,13 +15,15 @@ class PaymobFactory {
 	 * @param {*} secretKey
 	 * @memberof PaymobFactory
 	 */
-	constructor(secretKey) {
+	constructor(secretKey, options) {
 		this.secretKey = secretKey;
+		this.options = options;
 		this._intention = new Intention(this.secretKey);
 		this._refund = new Refund(this.secretKey);
 		this._void = new Void(this.secretKey);
 		this._capture = new Capture(this.secretKey);
 		this._initilizeIntentionBuilder();
+		this._config(options);
 		paymobLogger(`Paymob Node SDK Initialized with secret Key: ${this.secretKey}`);
 	}
 
@@ -46,7 +50,25 @@ class PaymobFactory {
 			create: (payload) => this._capture.create(payload)
 		};
 	}
+
+	/**
+	 * add user config to the global config object.
+	 * @param {Object} options
+	 * @return {void} 
+	 * @memberof PaymobFactory
+	 */
+	_config(options) {
+		if (typeof options === "object") {
+			if (options.baseUrl) {
+				globals.set("baseUrl", options.baseUrl);
+			}
+		} else {
+			paymobLogger("Invalid configuration object");
+			Promise.resolve("Invalid configuration object");
+		}
+	}
+
 }
 
-var Paymob = (secretKey) => new PaymobFactory(secretKey);
+var Paymob = (secretKey, options) => new PaymobFactory(secretKey, options);
 export default Paymob;

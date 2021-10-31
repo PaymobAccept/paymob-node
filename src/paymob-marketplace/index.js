@@ -6,7 +6,10 @@ const app = express();
 app.use(cors());
 
 const { Paymob } = require("../../dist/paymob");
-const paymob = Paymob("skl_eb7e7ac5117dcd6c0b7539a635f61764aca615bd3b63051606b845c30db3bff8");
+const paymob = Paymob("skl_dc8c42564e50f9201733a59d98b29cba0a52f0b51fe42ec557f88be9203650f2", {
+	// add your own API.
+	// baseUrl: "https//myApi.com" 
+});
 
 const payload = {
 	amount: "100",
