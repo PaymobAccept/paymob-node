@@ -7,8 +7,9 @@ app.use(cors());
 
 const { Paymob } = require("../../dist/paymob");
 const paymob = Paymob("skl_dc8c42564e50f9201733a59d98b29cba0a52f0b51fe42ec557f88be9203650f2", {
-	// add your own API.
-	// baseUrl: "https//myApi.com" 
+	// add your own API chattels.
+	// baseUrl: "https//myApi.com",
+	// apiVersion: "v8",
 });
 
 const payload = {

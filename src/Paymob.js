@@ -59,15 +59,19 @@ class PaymobFactory {
 	 */
 	_config(options) {
 		if (typeof options === "object") {
-			if (options.baseUrl) {
-				globals.set("baseUrl", options.baseUrl);
+			for (const key in options) {
+				if (Object.hasOwnProperty.call(options, key)) {
+					const element = options[key];
+					if (globals.has(key)) {
+						globals.set([key], element);
+					}
+				}
 			}
 		} else {
 			paymobLogger("Invalid configuration object");
 			Promise.resolve("Invalid configuration object");
 		}
 	}
-
 }
 
 var Paymob = (secretKey, options) => new PaymobFactory(secretKey, options);

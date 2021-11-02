@@ -20,7 +20,7 @@ export class PaymobBase {
 	}
 
 	_getApiVersion() {
-		return getApiVersion();
+		return globals.get("apiVersion") ? globals.get("apiVersion") : getApiVersion();
 	}
 
 	_getFullUrl(route) {

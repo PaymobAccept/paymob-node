@@ -6,6 +6,9 @@ const globals = {
 	baseUrl: {
 		value: ""
 	},
+	apiVersion: {
+		value: ""
+	},
 	// example for a protected one.
 	appKey: {
 		value: "paymob",
@@ -25,7 +28,17 @@ exports.get = function (global) {
 };
 
 /**
- * set to the store, if exists and is protected: return false.
+ * get from the store return variable or false if not exists.
+ * @param {*} prop
+ * @memberof global
+ * @return {boolean}
+ */
+exports.has = function (prop) {
+	return Object.keys(globals).includes(prop);
+};
+
+/**
+ * validate store prop,if exists : return true/false.
  * @param {*} global
  * @memberof global
  * @return {boolean}
