@@ -55,7 +55,7 @@ export class PayToken extends PaymobBase {
 			error.push({
 				"details": "Some parameters missed."
 			});
-			return Promise.reject(error);
+			return Promise.reject({error});
 		}
 
 		const options = {

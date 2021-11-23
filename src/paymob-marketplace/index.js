@@ -117,15 +117,31 @@ app.get("/marketplace/capture/", (req, res) => {
 
 app.get("/marketplace/paytoken/", (req, res) => {
 	const payload = {
-		// client_secret: "ckl_db84b8aef48471d994b595542991bc7f",
-		// token_id: "123456",
-		// token: "e29ac6d6676da32f28c7fe5a1a111694978f14ea686915f42fa53e93",
-		// customer_id: "baaba246-895c-4dfd-877b-c1ae10069188",
-		// method: "card-moto",
-		// payment_method_id: 1599970
+		client_secret: "ckl_db84b8aef48471d994b595542991bc7f",
+		token_id: "123456",
+		token: "e29ac6d6676da32f28c7fe5a1a111694978f14ea686915f42fa53e93",
+		customer_id: "baaba246-895c-4dfd-877b-c1ae10069188",
+		method: "card-moto",
+		payment_method_id: 1599970
 	};
 
 	paymob.PayToken.create(payload).then(nextApiResponse => {
+		res.send(nextApiResponse);
+	}).catch(err => {
+		res.send(err);
+	});
+});
+
+app.get("/marketplace/customer-details/", (req, res) => {
+	paymob.Customer.retrieve({ id: "c26e2788-d367-4789-9b68-c431943b1d9a" }).then(nextApiResponse => {
+		res.send(nextApiResponse);
+	}).catch(err => {
+		res.send(err);
+	});
+});
+
+app.get("/marketplace/customer-list/", (req, res) => {
+	paymob.Customer.list().then(nextApiResponse => {
 		res.send(nextApiResponse);
 	}).catch(err => {
 		res.send(err);
