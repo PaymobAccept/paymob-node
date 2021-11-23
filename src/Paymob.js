@@ -1,5 +1,6 @@
 import { Intention } from "./intention";
 import { Capture, Refund, Void } from "./payment-reference";
+import { PayToken } from "./pay-token";
 import { paymobLogger } from "./utils";
 
 const globals = require("./global");
@@ -22,6 +23,7 @@ class PaymobFactory {
 		this._refund = new Refund(this.secretKey);
 		this._void = new Void(this.secretKey);
 		this._capture = new Capture(this.secretKey);
+		this._payToken = new PayToken(this.secretKey);
 		this._initilizeIntentionBuilder();
 		this._config(options);
 		paymobLogger(`Paymob Node SDK Initialized with secret Key: ${this.secretKey}`);
@@ -48,6 +50,10 @@ class PaymobFactory {
 
 		this.Capture = {
 			create: (payload) => this._capture.create(payload)
+		};
+
+		this.PayToken = {
+			create: (payload) => this._payToken.create(payload)
 		};
 	}
 
