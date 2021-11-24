@@ -1,5 +1,6 @@
 import { applicationJsonHeader, authHeaderBuilder, HTTPRequest } from "../http";
 import { getApiBaseUrl, getApiVersion } from "../utils";
+const globals = require("../global");
 
 /**
  * Creates an instance of PaymobBase. to be extendable.
@@ -15,11 +16,11 @@ export class PaymobBase {
 	}
 
 	_getApiBaseUrl() {
-		return getApiBaseUrl();
+		return globals.get("baseUrl") ? globals.get("baseUrl") : getApiBaseUrl();
 	}
 
 	_getApiVersion() {
-		return getApiVersion();
+		return globals.get("apiVersion") ? globals.get("apiVersion") : getApiVersion();
 	}
 
 	_getFullUrl(route) {
