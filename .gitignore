@@ -3,3 +3,5 @@ dist/*.js
 .env
 docs
 coverage
+todos.md
+/.vscode

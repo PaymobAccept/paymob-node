@@ -1,3 +1,0 @@
-- add sdk validation before calling the api.
-- add license file.
-- add test cases.
