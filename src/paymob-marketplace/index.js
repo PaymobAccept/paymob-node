@@ -1,21 +1,16 @@
-// @ts-nocheck
-
 const express = require("express");
 const cors = require("cors");
 const app = express();
 app.use(cors());
+require("dotenv").config();
 
 const { Paymob } = require("../../dist/paymob");
-const paymob = Paymob("skl_51bf49f38681a7d859fbb7a48d43df747877e66e906a1851efad3c8f427c1082", {
-	// add your own API chattels.
-	baseUrl: "https://flashapi.paymob.com",
-	// apiVersion: "v8",
-});
+const paymob = Paymob(process.env.SECRET_KEY);
 
 const payload = {
 	amount: "100",
 	currency: "EGP",
-	payment_methods: ["card", "card-moto", "kiosk"],
+	payment_methods: ["card", "card-moto", "wallets", "kiosk"],
 	items: [
 		{
 			"name": "ASC1515",
@@ -32,9 +27,9 @@ const payload = {
 	],
 	billing_data: {
 		"apartment": "803",
-		"email": "claudette09@exa.com",
+		"email": "demo@paymob.com",
 		"floor": "42",
-		"first_name": "Clifford",
+		"first_name": "Muhammed",
 		"street": "Ethan Land",
 		"building": "8028",
 		"phone_number": "+201010101010",
@@ -42,15 +37,14 @@ const payload = {
 		"postal_code": "01898",
 		"city": "Jaskolskiburgh",
 		"country": "CR",
-		"last_name": "Nicolas",
+		"last_name": "Moussa",
 		"state": "Utah",
 	},
 	customer: {
-		"first_name": "youssef", "last_name": "tarek", "email": "youssef@tarek.com","phone_number":"+201010101010",
+		"first_name": "Muhammed", "last_name": "Moussa", "email": "demo@paymob.com","phone_number":"+201010101010",
 		"extras":{
-			"surname":"Abdelsattar"
+			"new_customer": false
 		}
-	
 	},
 	delivery_needed: false,
 };
